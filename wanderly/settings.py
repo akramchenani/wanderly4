@@ -121,12 +121,15 @@ USE_TZ        = True
 STATIC_URL  = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 # CompressedManifestStaticFilesStorage requires collectstatic to have been run.
 # Use it only in production; fall back to CompressedStaticFilesStorage locally
 # so CSS/JS load correctly with just `runserver` without needing collectstatic.
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# ─────────────────────────────────────────────
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'# ─────────────────────────────────────────────
 # Media files  (Cloudinary stores them forever)
 # ─────────────────────────────────────────────
 CLOUDINARY_STORAGE = {

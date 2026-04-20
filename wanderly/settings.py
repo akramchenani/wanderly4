@@ -17,9 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',   # must be before staticfiles in INSTALLED_APPS
-    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'channels',
     'accounts',
     'partners',

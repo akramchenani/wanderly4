@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
-# Render runs this script every time you deploy.
-set -o errexit   # exit on first error
+set -o errexit
 
 pip install -r requirements.txt
-
-# Collect static files into /staticfiles
-python manage.py collectstatic --no-input
-
-# Apply any pending database migrations
+python manage.py collectstatic --no-input --clear
 python manage.py migrate

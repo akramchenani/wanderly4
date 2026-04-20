@@ -125,11 +125,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # CompressedManifestStaticFilesStorage requires collectstatic to have been run.
 # Use it only in production; fall back to CompressedStaticFilesStorage locally
 # so CSS/JS load correctly with just `runserver` without needing collectstatic.
-if DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-else:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # ─────────────────────────────────────────────
 # Media files  (Cloudinary stores them forever)
 # ─────────────────────────────────────────────

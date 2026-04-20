@@ -79,25 +79,10 @@ CHANNEL_LAYERS = {
 DATABASE_URL = config('DATABASE_URL', default='')
 
 if DATABASE_URL:
-    import re
-    # Parse postgres://user:password@host:port/dbname
-    m = re.match(
-        r'postgres(?:ql)?://([^:]+):([^@]+)@([^:]+):(\d+)/(.+)',
-        DATABASE_URL,
-    )
-    if m:
-        DATABASES = {
-            'default': {
-                'ENGINE':   'django.db.backends.postgresql',
-                'USER':     m.group(1),
-                'PASSWORD': m.group(2),
-                'HOST':     m.group(3),
-                'PORT':     m.group(4),
-                'NAME':     m.group(5),
-            }
-        }
-    else:
-        raise ValueError(f'Cannot parse DATABASE_URL: {DATABASE_URL}')
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    }
 else:
     # Local development — SQLite
     DATABASES = {

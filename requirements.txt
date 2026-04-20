@@ -1,0 +1,17 @@
+Django>=5.0,<6.0
+daphne>=4.0,<5.0
+channels[daphne]>=4.0,<5.0
+Pillow>=10.0
+
+# Production database
+psycopg2-binary>=2.9
+
+# Serve static files efficiently in production
+whitenoise>=6.6
+
+# Read environment variables from .env file
+python-decouple>=3.8
+
+# Cloud media storage (Cloudinary)
+cloudinary>=1.36
+django-cloudinary-storage>=0.3.0
